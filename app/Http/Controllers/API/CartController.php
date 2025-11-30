@@ -57,6 +57,9 @@ class CartController extends Controller
     $cart->total_amount += $line_total;
     $cart->save();
 
+    $product->stock -= $request->quantity;
+    $product->save();
+
     return response()->json([
         'message' => 'Product added to cart',
         'cart' => $cart,
