@@ -14,66 +14,48 @@ The APIs include:
 git clone https://github.com/Phantasm-Solutions-Ltd-Pvt/php-f2f-for-candidate.git
 cd php-f2f-for-candidate
 Install Dependencies
-bash
-Copy code
 composer install
 Configure Environment
 Copy .env.example to .env:
 
 change the database credentials 
 
-bash
-Copy code
 cp .env.example .env
 Generate the application key:
 
-bash
-Copy code
+
 php artisan key:generate
 Run database migrations:
 
-bash
-Copy code
 php artisan migrate
 Generate JWT secret key:
 
-bash
-Copy code
+
 php artisan jwt:secret
 Copy the generated key and add it to .env:
 
 env
-Copy code
 JWT_SECRET=your_generated_jwt_key
 Add a random 64-character API key to .env:
 
 env
-Copy code
 API_KEY=f7c9a84e3b1d42fa6c5e97d3ab82f4e0c1b7d96f54a3e29cd8f2b617a4c0e9d1
 Run the Server
-bash
-Copy code
 php artisan serve
 The server will run at: http://127.0.0.1:8000
 
 2. API Endpoints
 Signup
-http
-Copy code
 POST http://127.0.0.1:8000/api/signup?name=YourName&email=youremail@example.com&password=YourPassword
 Replace with your own credentials
 
 Login
-http
-Copy code
 POST http://127.0.0.1:8000/api/login?email=youremail@example.com&password=YourPassword&apikey=your_api_key
 Use the API_KEY from .env
 
 Response will return a JWT token. Copy it for authentication
 
 Add Product to Cart
-http
-Copy code
 POST http://127.0.0.1:8000/api/add-to-cart?product_id=1&quantity=10
 In Postman, set Authorization → Bearer Token and paste the JWT token from login
 
